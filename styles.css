@@ -1,62 +1,149 @@
-/* Tipografía y layout base */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:#0b1320;background:#ffffff;line-height:1.5}
-img{max-width:100%;display:block}
+/* =========================
+   Sitio Susan Atuán (D13)
+   styles.css – versión completa
+   ========================= */
 
-.container{max-width:1080px;margin:0 auto;padding:0 20px}
-.skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip:focus{left:12px;top:12px;width:auto;height:auto;background:#fff;border:2px solid #0A4DCD;padding:8px;border-radius:8px;z-index:1000}
+/* --------- Reset & base --------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+:root{
+  --blue-700:#0A4DCD;   /* azul campaña */
+  --blue-600:#0c63ff;
+  --blue-900:#0b1320;
+  --pink-500:#ff2d55;   /* acento */
+  --ink:#0b1320;
+  --ink-2:#2c3446;
+  --bg:#ffffff;
+  --muted:#f6f8fc;
+  --line:#e4e8f1;
+}
 
-.topbar{position:sticky;top:0;background:#0A4DCD;color:#fff;border-bottom:1px solid rgba(255,255,255,.2);z-index:20}
-.bar{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:28px;height:28px}
-.brand-text{font-weight:800;letter-spacing:.2px}
-.nav{display:flex;gap:14px;flex-wrap:wrap}
-.nav a{color:#fff;text-decoration:none;font-weight:600;opacity:.95}
-.btn{display:inline-block;padding:12px 16px;border-radius:12px;background:#ff2d55;color:#fff;font-weight:800;text-decoration:none;border:2px solid #ff2d55}
-.btn:hover{filter:brightness(1.05)}
-.btn--ghost{background:transparent;color:#fff;border-color:#fff}
-.btn--sm{padding:8px 12px;border-radius:10px}
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+}
 
-.hero{background:linear-gradient(135deg,#0A4DCD 0%,#0c63ff 100%);color:#fff;padding:36px 0 28px}
-.hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
-.overline{text-transform:uppercase;letter-spacing:.12em;font-weight:900;opacity:.9;margin:0 0 6px}
-h1{font-size:46px;line-height:1.05;margin:0 0 10px}
-h1 .thin{font-weight:300;opacity:.95}
-.lead{opacity:.95;margin:0 0 14px}
-.cta{display:flex;gap:12px;margin:10px 0 8px}
-.tags{list-style:none;padding:0;margin:10px 0 0;display:flex;gap:8px;flex-wrap:wrap}
-.tags li{background:rgba(255,255,255,.16);padding:6px 10px;border-radius:999px;font-size:14px}
+img{ max-width:100%; display:block; }
 
-.hero__img img{border-radius:20px;border:4px solid rgba(255,255,255,.2);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+/* --------- Helpers --------- */
+.container{ max-width:1080px; margin:0 auto; padding:0 20px; }
 
-.section{padding:42px 0;border-top:1px solid #edf1f7}
-.section--muted{background:#f6f8fc}
+.skip{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip:focus{
+  left:12px; top:12px; width:auto; height:auto; background:#fff; border:2px solid var(--blue-700);
+  padding:8px; border-radius:8px; z-index:1000;
+}
 
-h2{font-size:30px;margin:0 0 18px;color:#0b1320}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{border:1px solid #e4e8f1;border-radius:16px;padding:16px;background:#fff}
+/* --------- Topbar / Nav --------- */
+.topbar{
+  position:sticky; top:0; z-index:20;
+  background: var(--blue-700);
+  color:#fff; border-bottom:1px solid rgba(255,255,255,.2);
+}
+.bar{ display:flex; align-items:center; justify-content:space-between; padding:10px 0; }
+.brand{ display:flex; align-items:center; gap:10px; }
+.logo{ width:28px; height:28px; }
+.brand-text{ font-weight:800; letter-spacing:.2px; }
+.nav{ display:flex; gap:14px; flex-wrap:wrap; }
+.nav a{ color:#fff; text-decoration:none; font-weight:600; opacity:.95; }
 
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
-.list{columns:2;gap:24px;padding-left:16px}
-.bullets{padding-left:18px}
-.map{border-radius:14px;border:1px solid #e4e8f1}
+/* --------- Buttons --------- */
+.btn{
+  display:inline-block; padding:12px 16px; border-radius:12px;
+  background: var(--pink-500); color:#fff; font-weight:800; text-decoration:none;
+  border:2px solid var(--pink-500); transition: transform .06s ease, filter .2s ease;
+}
+.btn:hover{ filter:brightness(1.06); transform: translateY(-1px); }
+.btn--ghost{ background:transparent; color:#fff; border-color:#fff; }
+.btn--sm{ padding:8px 12px; border-radius:10px; }
 
-.form{display:grid;gap:10px}
-label{display:grid;gap:6px;font-weight:700;color:#0b1320}
-input,textarea{padding:12px;border-radius:12px;border:1px solid #ccd6e3;font:inherit;background:#fff}
-button.btn{cursor:pointer}
+/* --------- Hero --------- */
+.hero{
+  background: radial-gradient(1400px 520px at 85% -20%, var(--blue-600), transparent 60%),
+              linear-gradient(135deg, var(--blue-700) 0%, var(--blue-600) 100%);
+  color:#fff; padding:36px 0 28px;
+}
+.hero__grid{
+  display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center;
+}
+.overline{ text-transform:uppercase; letter-spacing:.12em; font-weight:900; opacity:.9; margin:0 0 6px; }
+h1{ font-size:46px; line-height:1.05; margin:0 0 10px; }
+h1 .thin{ font-weight:300; opacity:.95; }
+.lead{ opacity:.95; margin:0 0 14px; }
+.cta{ display:flex; gap:12px; margin:10px 0 8px; }
+.tags{ list-style:none; padding:0; margin:10px 0 0; display:flex; gap:8px; flex-wrap:wrap; }
+.tags li{ background:rgba(255,255,255,.16); padding:6px 10px; border-radius:999px; font-size:14px; }
 
-.links{display:flex;gap:10px;flex-wrap:wrap}
+/* ---- Foto de campaña (ajuste elegante) ----
+   - Se asegura relleno completo sin deformar (object-fit: cover)
+   - Marco redondeado, borde blanco y sombra
+   - Un sutil degradado inferior para lectura del contenido si se usa como card
+*/
+.hero__img{
+  position:relative;
+}
+.hero__img::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,.18), rgba(0,0,0,0) 55%);
+  border-radius:24px; pointer-events:none;
+  opacity:.0; /* deja apagado el velo, útil si luego lo quieres activar */
+}
+.hero__img img{
+  width:100%;
+  height:min(520px, 70vh);
+  object-fit:cover;
+  object-position:center;
+  border-radius:24px;
+  border:6px solid rgba(255,255,255,.95);
+  box-shadow: 0 14px 40px rgba(0,0,0,.28);
+  background:#fff;
+}
 
-.footer{padding:28px 0;background:#0b1320;color:#e9f0fb;margin-top:8px}
-.footer .small{opacity:.8}
+/* --------- Sections --------- */
+.section{ padding:42px 0; border-top:1px solid #edf1f7; }
+.section--muted{ background: var(--muted); }
 
-/* Responsivo */
-@media (max-width:900px){
-  .hero__grid,.grid-2{grid-template-columns:1fr}
-  h1{font-size:36px}
-  .list{columns:1}
+h2{ font-size:30px; margin:0 0 18px; color:var(--ink); }
+.cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+.card{
+  border:1px solid var(--line); border-radius:16px; padding:16px; background:#fff;
+  box-shadow: 0 2px 6px rgba(10,77,205,.04);
+}
+
+/* grids auxiliares */
+.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; align-items:start; }
+
+.list{ columns:2; gap:24px; padding-left:16px; }
+.bullets{ padding-left:18px; }
+.map{ border-radius:14px; border:1px solid var(--line); }
+
+/* --------- Formularios --------- */
+.form{ display:grid; gap:10px; }
+label{ display:grid; gap:6px; font-weight:700; color:var(--ink); }
+input, textarea{
+  padding:12px; border-radius:12px; border:1px solid #ccd6e3; font:inherit; background:#fff;
+}
+button.btn{ cursor:pointer; }
+
+/* --------- Links --------- */
+.links{ display:flex; gap:10px; flex-wrap:wrap; }
+
+/* --------- Footer --------- */
+.footer{
+  padding:28px 0; background: var(--ink); color:#e9f0fb; margin-top:8px;
+}
+.footer .small{ opacity:.8; }
+
+/* --------- Responsive --------- */
+@media (max-width: 900px){
+  .hero__grid, .grid-2{ grid-template-columns:1fr; }
+  h1{ font-size:36px; }
+  .list{ columns:1; }
+  .nav{ gap:10px; }
+  .btn{ padding:11px 14px; }
+  .hero__img img{ height: min(440px, 60vh); }
 }
